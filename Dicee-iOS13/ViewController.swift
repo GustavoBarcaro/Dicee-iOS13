@@ -22,22 +22,17 @@ class ViewController: UIViewController {
         UIImage(named: "DiceSix")
     ]
     
-    var leftDiceNumber = 1;
-    var rightDiceNumber = 1;
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        diceImageViewOne.image = UIImage(named: "DiceSix")
-        diceImageViewTwo.image = UIImage(named: "DiceTwo")
-        
-        //diceImageViewOne.alpha = 0.5
-    }
-
+ 
     @IBAction func rollButtonPressed(_ sender: UIButton) {
-        diceImageViewOne.image = diceImages[0]
-        diceImageViewTwo.image = diceImages[0]
-
+        if let randomImageOne = diceImages.randomElement(),
+           let randomImageTwo = diceImages.randomElement() {
+            diceImageViewOne.image = randomImageOne
+            diceImageViewTwo.image = randomImageTwo
+        } else {
+            print("No images found in diceImages")
+        }
+        
+        
     }
     
 }
